@@ -23,10 +23,10 @@ namespace SensorTestWear
     #nowarn "51" // address-of operator can occur in the code
     #nowarn "1183" // unused 'this' reference
     
-    exception ReturnExceptioncd273fc11a3b4e1795c705ea304b0cbe of obj
-    exception ReturnNoneExceptioncd273fc11a3b4e1795c705ea304b0cbe
+    exception ReturnException3fa2a772085042068a4c5fed18380bd9 of obj
+    exception ReturnNoneException3fa2a772085042068a4c5fed18380bd9
     [<AutoOpen>]
-    module FuncConvertFinalOverloadcd273fc11a3b4e1795c705ea304b0cbe =
+    module FuncConvertFinalOverload3fa2a772085042068a4c5fed18380bd9 =
       // This extension member adds to the FuncConvert type and is the last resort member in the method overloading rules. 
       type global.Microsoft.FSharp.Core.FuncConvert with
           /// A utility function to convert function values from tupled to curried form
@@ -165,11 +165,11 @@ namespace SensorTestWear
             // aapt resource value: 0x7f050005
             static member common_signin_btn_light_text_pressed = 2131034117
             
-            // aapt resource value: 0x7f05001b
-            static member common_signin_btn_text_dark = 2131034139
+            // aapt resource value: 0x7f05001e
+            static member common_signin_btn_text_dark = 2131034142
             
-            // aapt resource value: 0x7f05001c
-            static member common_signin_btn_text_light = 2131034140
+            // aapt resource value: 0x7f05001f
+            static member common_signin_btn_text_light = 2131034143
             
             // aapt resource value: 0x7f05000c
             static member dark_blue = 2131034124
@@ -213,8 +213,17 @@ namespace SensorTestWear
             // aapt resource value: 0x7f050019
             static member semitransparent_grey = 2131034137
             
+            // aapt resource value: 0x7f05001d
+            static member text_color = 2131034141
+            
             // aapt resource value: 0x7f05001a
             static member white = 2131034138
+            
+            // aapt resource value: 0x7f05001b
+            static member wl_blue = 2131034139
+            
+            // aapt resource value: 0x7f05001c
+            static member wl_gray = 2131034140
             (* Member of type 'CodeTypeConstructor' is not supported by the CodeDOM provider and was omitted *)
 
 
@@ -237,6 +246,15 @@ namespace SensorTestWear
             
             // aapt resource value: 0x7f070004
             static member dismiss_padding = 2131165188
+            
+            // aapt resource value: 0x7f070006
+            static member page_column_margin = 2131165190
+            
+            // aapt resource value: 0x7f070007
+            static member page_column_margin_round = 2131165191
+            
+            // aapt resource value: 0x7f070005
+            static member page_row_margin = 2131165189
             (* Member of type 'CodeTypeConstructor' is not supported by the CodeDOM provider and was omitted *)
 
 
@@ -616,6 +634,9 @@ namespace SensorTestWear
             
             // aapt resource value: 0x7f02007b
             static member powered_by_google_light = 2130837627
+            
+            // aapt resource value: 0x7f02007c
+            static member wl_circle = 2130837628
             (* Member of type 'CodeTypeConstructor' is not supported by the CodeDOM provider and was omitted *)
 
 
@@ -639,6 +660,12 @@ namespace SensorTestWear
             // aapt resource value: 0x7f090006
             static member bottom = 2131296262
             
+            // aapt resource value: 0x7f090013
+            static member btnSensors = 2131296275
+            
+            // aapt resource value: 0x7f090011
+            static member circle = 2131296273
+            
             // aapt resource value: 0x7f090010
             static member dismiss_overlay_button = 2131296272
             
@@ -657,14 +684,17 @@ namespace SensorTestWear
             // aapt resource value: 0x7f09000e
             static member message = 2131296270
             
-            // aapt resource value: 0x7f090011
-            static member myButton = 2131296273
+            // aapt resource value: 0x7f090012
+            static member name = 2131296274
             
             // aapt resource value: 0x7f090001
             static member none = 2131296257
             
             // aapt resource value: 0x7f090002
             static member normal = 2131296258
+            
+            // aapt resource value: 0x7f090014
+            static member pager = 2131296276
             
             // aapt resource value: 0x7f090008
             static member right = 2131296264
@@ -675,11 +705,11 @@ namespace SensorTestWear
             // aapt resource value: 0x7f090004
             static member terrain = 2131296260
             
-            // aapt resource value: 0x7f090013
-            static member text = 2131296275
+            // aapt resource value: 0x7f090016
+            static member text = 2131296278
             
-            // aapt resource value: 0x7f090012
-            static member title = 2131296274
+            // aapt resource value: 0x7f090015
+            static member title = 2131296277
             
             // aapt resource value: 0x7f090009
             static member top = 2131296265
@@ -708,10 +738,16 @@ namespace SensorTestWear
             static member dismiss_overlay = 2130903041
             
             // aapt resource value: 0x7f030002
-            static member Main = 2130903042
+            static member ListItem = 2130903042
             
             // aapt resource value: 0x7f030003
-            static member watch_card_content = 2130903043
+            static member Main = 2130903043
+            
+            // aapt resource value: 0x7f030004
+            static member Pager = 2130903044
+            
+            // aapt resource value: 0x7f030005
+            static member watch_card_content = 2130903045
             (* Member of type 'CodeTypeConstructor' is not supported by the CodeDOM provider and was omitted *)
 
 

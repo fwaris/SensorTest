@@ -44,7 +44,7 @@ type WearableListItemLayout(ctx:Context) =
         circle <- x.FindViewById<ImageView>(Resource_Id.circle)
         name <- x.FindViewById<TextView>(Resource_Id.name)
 
-(* awaiting a xamarin
+(* awaiting a xamarin fix for lit view
 
 type WlvAdapter(ctx:Context, items : string array) =
     inherit WearableListView.Adapter()
@@ -63,16 +63,36 @@ type WlvAdapter(ctx:Context, items : string array) =
 
 *)
 
-[<Activity(Label = "SensorTestWear", MainLauncher = false)>]
+[<Activity(Label = "SensorTestWear", MainLauncher = true)>]
 type MainActivity() = 
     inherit Activity()
     let mutable count : int = 1
+
     override this.OnCreate(bundle) = 
+
+        base.OnCreate(bundle)
+        // Set our view from the "main" layout resource
+        this.SetContentView(Resource_Layout.Main)
+        // Get our button from the layout resource, and attach an event to it
+        let btn = this.FindViewById<Button>(Resource_Id.btnSensors)
+        let sw = this.FindViewById<Switch>(Resource_Id.swService)
+        btn.Click.Add(fun _ ->
+            new Intent(this,typeof<PageViewActivity>) |> this.StartActivity
+            )
+
+
+
+
+
+(*
+    override this.OnCreate(bundle) = 
+
         base.OnCreate(bundle)
         // Set our view from the "main" layout resource
         this.SetContentView(Resource_Layout.Main)
         // Get our button from the layout resource, and attach an event to it
         let button = this.FindViewById<Button>(Resource_Id.btnSensors)
+        let sw = this.FindViewById<Switch>(Resource_Id.swService)
         let ll = button.Parent :?> LinearLayout
         let wlv = new WearableListView(this)
         wlv.LayoutParameters <-
@@ -86,6 +106,7 @@ type MainActivity() =
 
             button.Text <- sprintf "%d clicks!" count
             count <- count + 1)
+*)
 
     override this.OnStop() = 
        base.OnStop()

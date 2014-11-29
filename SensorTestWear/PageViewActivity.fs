@@ -21,13 +21,20 @@ type SimpleGridPagerAdapter(ctx:Context, fm:FragmentManager, data:Snsr array) =
     inherit FragmentGridPagerAdapter(fm)
 
     override x.GetFragment(row,col) =
-        let fgmt = CardFragment.Create(data.[row].Name,data.[row].Desc)
-        fgmt :> _
+        CardFragment.Create(data.[row].Name,data.[row].Desc) :> Fragment
+        (*
+        let f = 
+            if row = 0 then
+                new ActionCardFragment() :> Fragment
+            else
+                CardFragment.Create(data.[row].Name,data.[row].Desc) :> Fragment  
+        f
+        *)
 
-    override x.RowCount = data.Length
+    override x.RowCount = data.Length 
     override x.GetColumnCount(row) = 1
 
-[<Activity(Label = "PageViewActivity", MainLauncher=true)>]
+[<Activity(Label = "PageViewActivity", MainLauncher=false)>]
 type PageViewActivity() = 
     inherit Activity()
     let mutable pager : GridViewPager = null
@@ -55,4 +62,4 @@ type PageViewActivity() =
         pager <- x.FindViewById<GridViewPager>(Resource_Id.pager)
         pager.SetOnApplyWindowInsetsListener(x)
         pager.Adapter <- new SimpleGridPagerAdapter(x, x.FragmentManager, l)
-        new Intent(x,typeof<HeartRateService>) |> x.StartService |> ignore
+        //new Intent(x,typeof<HeartRateService>) |> x.StartService |> ignore

@@ -66,9 +66,11 @@
     <Compile Include="Properties\AssemblyInfo.fs" />
     <Compile Include="Resources\Resource.designer.fs" />
     <Compile Include="Extensions.fs" />
-    <Compile Include="WearService.fs" />
-    <Compile Include="MainActivity.fs" />
+    <Compile Include="AndroidUtils.fs" />
+    <Compile Include="SensorService.fs" />
+    <Compile Include="ActionCardFragment.fs" />
     <Compile Include="PageViewActivity.fs" />
+    <Compile Include="MainActivity.fs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml" />
@@ -79,6 +81,12 @@
     <AndroidResource Include="Resources\values\colors.xml" />
     <AndroidResource Include="Resources\layout\Pager.xml" />
     <AndroidResource Include="Resources\values\dimens.xml" />
+    <AndroidResource Include="Resources\drawable\ActionStateList.xml" />
+    <AndroidResource Include="Resources\layout\ActionButton.xml" />
+    <AndroidResource Include="Resources\drawable\service_off.png" />
+    <AndroidResource Include="Resources\drawable\service_on.png" />
+    <AndroidResource Include="Resources\drawable\service_starting.png" />
+    <AndroidResource Include="Resources\layout\CF1.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\AboutAssets.txt" />

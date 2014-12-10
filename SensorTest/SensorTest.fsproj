@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -59,6 +59,14 @@
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.fs" />
     <Compile Include="Properties\AssemblyInfo.fs" />
+    <Compile Include="Extensions.fs" />
+    <Compile Include="AndroidExtensions.fs" />
+    <Compile Include="GlobalState.fs" />
+    <Compile Include="Constants.fs" />
+    <Compile Include="Serdes.fs" />
+    <Compile Include="Storage.fs" />
+    <Compile Include="DataReceiver.fs" />
+    <Compile Include="HostSensorService.fs" />
     <Compile Include="MainActivity.fs" />
   </ItemGroup>
   <ItemGroup>

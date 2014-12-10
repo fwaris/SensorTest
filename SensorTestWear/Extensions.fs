@@ -1,7 +1,8 @@
 ﻿module Extensions
 open System
-let tag = "SensorTest"
-let logI d = Android.Util.Log.Info(tag,d)  |> ignore
+let tag = "fw.sensor.test"
+let logI d = 
+    Android.Util.Log.Info(tag,d)  |> ignore
 let logE d = Android.Util.Log.Error(tag,d) |> ignore
 
 let lowercase (s:string) = s.ToLower()

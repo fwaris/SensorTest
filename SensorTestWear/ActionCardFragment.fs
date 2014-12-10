@@ -5,7 +5,6 @@ open System.Collections.Generic
 open System.Linq
 open System.Text
 
-open AndroidExtensions
 
 open Android.App
 open Android.Content

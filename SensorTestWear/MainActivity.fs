@@ -44,78 +44,51 @@ type WearableListItemLayout(ctx:Context) =
         circle <- x.FindViewById<ImageView>(Resource_Id.circle)
         name <- x.FindViewById<TextView>(Resource_Id.name)
 
-(* awaiting a xamarin fix for lit view
-
-type WlvAdapter(ctx:Context, items : string array) =
-    inherit WearableListView.Adapter()
-    let layoutInflator = LayoutInflater.From(ctx)
-
-    override x.ItemCount = items.Length
-
-    override x.OnCreateViewHolder(parent,viewType) =
-        new WearableListView.ViewHolder(
-            layoutInflator.Inflate(Resource_Layout.ListItem,parent))
-        :> _
-
-    override x.OnBindViewHolder(holder,pos) =
-        let view = holder.ItemView.FindViewById<TextView>(Resource_Id.name)
-        view.Text <- (items.[pos])
-
-*)
-
-[<Activity(Label = "SensorTestWear", MainLauncher = true)>]
+[<Activity(Label = "Sensor Test", MainLauncher = true)>]
 type MainActivity() = 
     inherit Activity()
     let mutable count : int = 1
+    let uiCtx = System.Threading.SynchronizationContext.Current
+    let mutable subscription = Unchecked.defaultof<_>
+    let defaultSensors = 
+            [|
+                SensorType.Accelerometer; SensorType.Gyroscope; 
+                SensorType.LinearAcceleration
+                SensorType.RotationVector; SensorType.Gravity
+            |]
+
+    let updateService (ctx:Context) (sw:Switch) =
+        async {
+            try 
+                let isrunning = AndroidExtensions.isServiceRunning "SensorTestWear.WearSensorService"
+                do! Async.SwitchToContext uiCtx
+                sw.Checked <- isrunning
+                sw.Click.Add (fun ev -> 
+                    if sw.Checked then
+                        let i = new Intent(ctx,typeof<WearSensorService>) 
+                        let data = defaultSensors |> Array.map int
+                        i.PutExtra(Constants.sensors, Serdes.intArrayToBytes data)
+                        |> ctx.StartService |> ignore
+                    else
+                        new Intent(ctx,typeof<WearSensorService>) |> ctx.StopService |> ignore
+                    )
+            with ex ->
+                logE ex.Message
+            } |> Async.Start
 
     override this.OnCreate(bundle) = 
-
         base.OnCreate(bundle)
-        // Set our view from the "main" layout resource
         this.SetContentView(Resource_Layout.Main)
-        // Get our button from the layout resource, and attach an event to it
         let btn = this.FindViewById<Button>(Resource_Id.btnSensors)
         let sw = this.FindViewById<Switch>(Resource_Id.swService)
-        btn.Click.Add(fun _ ->
-            new Intent(this,typeof<PageViewActivity>) |> this.StartActivity
-            )
-
-
-
-
-
-(*
-    override this.OnCreate(bundle) = 
-
-        base.OnCreate(bundle)
-        // Set our view from the "main" layout resource
-        this.SetContentView(Resource_Layout.Main)
-        // Get our button from the layout resource, and attach an event to it
-        let button = this.FindViewById<Button>(Resource_Id.btnSensors)
-        let sw = this.FindViewById<Switch>(Resource_Id.swService)
-        let ll = button.Parent :?> LinearLayout
-        let wlv = new WearableListView(this)
-        wlv.LayoutParameters <-
-            new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MatchParent,
-                LinearLayout.LayoutParams.MatchParent)
-        ll.AddView(wlv)
-        button.Click.Add(fun args -> 
-            let smgr = this.GetSystemService(Service.SensorService) :?> SensorManager
-            let l = smgr.GetSensorList(SensorType.All) |> Seq.map (fun x-> x.ToString()) |> Seq.toArray
-
-            button.Text <- sprintf "%d clicks!" count
-            count <- count + 1)
-*)
+        updateService this sw 
+        btn.Click.Add(fun _ -> new Intent(this,typeof<PageViewActivity>) |> this.StartActivity)
+        subscription <- GlobalState.isRunning.Subscribe(fun running -> 
+            logI (sprintf "global state changed: %A" running)
+            sw.Checked <- running)
 
     override this.OnStop() = 
+       if subscription <> Unchecked.defaultof<_> then subscription.Dispose()
        base.OnStop()
 
-    //this is only needed for
-    //the linker to not stip out the "OnCompleted" method
-    interface IObserver<string> with
-        member x.OnCompleted() = ()
-        member x.OnError(y) = ()
-        member x.OnNext(y) = ()
 
-       

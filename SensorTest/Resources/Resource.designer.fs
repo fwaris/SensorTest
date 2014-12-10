@@ -23,10 +23,10 @@ namespace SensorTest
     #nowarn "51" // address-of operator can occur in the code
     #nowarn "1183" // unused 'this' reference
     
-    exception ReturnException436fb9dc165043c5acb33035f028e860 of obj
-    exception ReturnNoneException436fb9dc165043c5acb33035f028e860
+    exception ReturnException133085ae6149423988680f74e7f6138d of obj
+    exception ReturnNoneException133085ae6149423988680f74e7f6138d
     [<AutoOpen>]
-    module FuncConvertFinalOverload436fb9dc165043c5acb33035f028e860 =
+    module FuncConvertFinalOverload133085ae6149423988680f74e7f6138d =
       // This extension member adds to the FuncConvert type and is the last resort member in the method overloading rules. 
       type global.Microsoft.FSharp.Core.FuncConvert with
           /// A utility function to convert function values from tupled to curried form
@@ -639,6 +639,9 @@ namespace SensorTest
             // aapt resource value: 0x7f0b0006
             static member bottom = 2131427334
             
+            // aapt resource value: 0x7f0b0016
+            static member btnCopy = 2131427350
+            
             // aapt resource value: 0x7f0b0010
             static member dismiss_overlay_button = 2131427344
             
@@ -654,11 +657,11 @@ namespace SensorTest
             // aapt resource value: 0x7f0b0007
             static member left = 2131427335
             
+            // aapt resource value: 0x7f0b0012
+            static member linearLayout1 = 2131427346
+            
             // aapt resource value: 0x7f0b000e
             static member message = 2131427342
-            
-            // aapt resource value: 0x7f0b0011
-            static member myButton = 2131427345
             
             // aapt resource value: 0x7f0b0001
             static member none = 2131427329
@@ -672,14 +675,26 @@ namespace SensorTest
             // aapt resource value: 0x7f0b0003
             static member satellite = 2131427331
             
+            // aapt resource value: 0x7f0b0015
+            static member sensorList = 2131427349
+            
+            // aapt resource value: 0x7f0b0014
+            static member spnFiles = 2131427348
+            
+            // aapt resource value: 0x7f0b0011
+            static member swService = 2131427345
+            
             // aapt resource value: 0x7f0b0004
             static member terrain = 2131427332
             
-            // aapt resource value: 0x7f0b0013
-            static member text = 2131427347
+            // aapt resource value: 0x7f0b0018
+            static member text = 2131427352
             
-            // aapt resource value: 0x7f0b0012
-            static member title = 2131427346
+            // aapt resource value: 0x7f0b0013
+            static member textView1 = 2131427347
+            
+            // aapt resource value: 0x7f0b0017
+            static member title = 2131427351
             
             // aapt resource value: 0x7f0b0009
             static member top = 2131427337

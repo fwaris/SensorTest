@@ -41,7 +41,6 @@
     <PlatformTarget>
     </PlatformTarget>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
-    <AndroidLinkMode>Full</AndroidLinkMode>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -61,13 +60,18 @@
     <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="packages.config" />
+    <Compile Include="Extensions.fs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.fs" />
     <Compile Include="Resources\Resource.designer.fs" />
-    <Compile Include="Extensions.fs" />
-    <Compile Include="AndroidUtils.fs" />
-    <Compile Include="SensorService.fs" />
+    <Compile Include="AndroidExtensions.fs" />
+    <Compile Include="GlobalState.fs" />
+    <Compile Include="Constants.fs" />
+    <Compile Include="Serdes.fs" />
+    <Compile Include="Storage.fs" />
+    <Compile Include="FileSender.fs" />
+    <Compile Include="WearSensorService.fs" />
     <Compile Include="ActionCardFragment.fs" />
     <Compile Include="PageViewActivity.fs" />
     <Compile Include="MainActivity.fs" />

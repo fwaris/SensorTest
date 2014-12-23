@@ -17,4 +17,22 @@
         android:layout_height="wrap_content"
         android:id="@+id/swService"
         android:text="Service" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:id="@+id/space1" />
+    <Button
+        android:id="@+id/btnFiles"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Files" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:id="@+id/space1" />
+    <Button
+        android:id="@+id/btnDelFiles"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Delete Files" />
 </LinearLayout>

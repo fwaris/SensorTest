@@ -6,7 +6,7 @@ open Extensions
 
 let personalDir = Environment.GetFolderPath(Environment.SpecialFolder.Personal)
 let data_directory = Path.Combine(personalDir,"data")
-let temp_ext = "_.csv"
+let temp_ext = "._csv"
 let csv_ext = ".csv"
 
 let ensureDir dir =
@@ -51,9 +51,10 @@ let closeFile f =
         str.Close()
         let path = Path.GetDirectoryName(file)
         let fn = Path.GetFileNameWithoutExtension(file)
-        let file2 = Path.Combine(path,fn,csv_ext)
+        let file2 = Path.Combine(path,fn + csv_ext)
         try
             File.Move(file,file2)
+            logI file2
         with ex ->
             logE ex.Message
     | None -> ()
@@ -95,3 +96,12 @@ let rollover timeSpanMS (inbox:MailboxProcessor<_>) =
             with ex ->
                logE ex.Message
     }
+
+let hasExt ext file = Path.GetExtension(file) = ext
+
+let fileList() = 
+    let allFiles = data_directory |> Directory.GetFiles |> Seq.toArray
+    let csvFiles = allFiles |> Array.filter (hasExt csv_ext)
+    csvFiles
+
+let deleteFiles() = fileList() |> Array.iter File.Delete

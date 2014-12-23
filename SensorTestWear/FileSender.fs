@@ -60,7 +60,7 @@ let sendFile apiClient filePath =
 let sendFiles (ctx:Context) dir =
     let files = 
         Directory.GetFiles(dir) 
-        |> Seq.filter (fun f -> Path.GetExtension(f) = Storage.csv_ext)
+        |> Seq.filter (Storage.hasExt Storage.csv_ext)
         |> Seq.toList
     if files.Count() > 0 then
         let bldr = new GoogleApiClientBuilder(ctx)

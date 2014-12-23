@@ -16,6 +16,7 @@
     <AssemblyName>SensorTestWear</AssemblyName>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <TargetFrameworkVersion>v4.4.87</TargetFrameworkVersion>
+    <JavaMaximumHeapSize>768m</JavaMaximumHeapSize>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,18 +50,21 @@
     <Reference Include="mscorlib" />
     <Reference Include="FSharp.Core" />
     <Reference Include="Mono.Android" />
-    <Reference Include="Xamarin.Android.Wearable">
-      <HintPath>..\packages\Xamarin.Android.Wear.1.0.0-preview7\lib\MonoAndroid10\Xamarin.Android.Wearable.dll</HintPath>
+    <Reference Include="Xamarin.Android.Support.v4">
+      <HintPath>..\packages\Xamarin.Android.Support.v4.21.0.3.0\lib\MonoAndroid10\Xamarin.Android.Support.v4.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Android.Support.v13">
-      <HintPath>..\packages\Xamarin.Android.Support.v13.20.0.0.4\lib\MonoAndroid32\Xamarin.Android.Support.v13.dll</HintPath>
+    <Reference Include="Xamarin.Android.Support.v7.RecyclerView">
+      <HintPath>..\packages\Xamarin.Android.Support.v7.RecyclerView.21.0.3.0\lib\MonoAndroid403\Xamarin.Android.Support.v7.RecyclerView.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Wearable">
+      <HintPath>..\packages\Xamarin.Android.Wear.1.1.0.1\lib\MonoAndroid44\Xamarin.Android.Wearable.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml" />
-    <None Include="packages.config" />
     <Compile Include="Extensions.fs" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.fs" />
@@ -71,9 +75,10 @@
     <Compile Include="Serdes.fs" />
     <Compile Include="Storage.fs" />
     <Compile Include="FileSender.fs" />
+    <Compile Include="ConfirmationActivity.fs" />
     <Compile Include="WearSensorService.fs" />
-    <Compile Include="ActionCardFragment.fs" />
     <Compile Include="PageViewActivity.fs" />
+    <Compile Include="ListFilesActivity.fs" />
     <Compile Include="MainActivity.fs" />
   </ItemGroup>
   <ItemGroup>
@@ -90,7 +95,10 @@
     <AndroidResource Include="Resources\drawable\service_off.png" />
     <AndroidResource Include="Resources\drawable\service_on.png" />
     <AndroidResource Include="Resources\drawable\service_starting.png" />
-    <AndroidResource Include="Resources\layout\CF1.xml" />
+    <AndroidResource Include="Resources\layout\FileList.xml" />
+    <AndroidResource Include="Resources\layout\ListItemImageText.xml" />
+    <AndroidResource Include="Resources\layout\ListItemText.axml" />
+    <AndroidResource Include="Resources\layout\Confirmation.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\AboutAssets.txt" />

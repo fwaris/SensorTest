@@ -52,15 +52,30 @@ type MainActivity() =
         base.OnCreate(bundle)
         Storage.ensureDir(Storage.data_directory)
         this.SetContentView(Resource_Layout.Main)
-        let btn = this.FindViewById<Button>(Resource_Id.btnSensors)
-        let sw = this.FindViewById<Switch>(Resource_Id.swService)
-        let btf = this.FindViewById<Button>(Resource_Id.btnFiles)
-        updateService this sw 
-        btn.Click.Add(fun _ -> new Intent(this,typeof<PageViewActivity>) |> this.StartActivity)
-        btf.Click.Add(fun _ -> new Intent(this,typeof<ListFilesActivity>) |> this.StartActivity)
+
+        let btnSensors = this.FindViewById<Button>(Resource_Id.btnSensors)
+        let tglService = this.FindViewById<Switch>(Resource_Id.swService)
+        let btnFiles   = this.FindViewById<Button>(Resource_Id.btnFiles)
+        let btnDelFls  = this.FindViewById<Button>(Resource_Id.btnDelFiles)
+
+        updateService this tglService
         subscription <- GlobalState.isRunning.Subscribe(fun running -> 
             logI (sprintf "global state changed: %A" running)
-            sw.Checked <- running)
+            tglService.Checked <- running)
+
+        btnSensors.Click.Add (fun _ -> new Intent(this,typeof<PageViewActivity>) |> this.StartActivity )
+
+        btnFiles.Click.Add (fun _ -> new Intent(this,typeof<ListFilesActivity>)  |> this.StartActivity)
+
+        btnDelFls.Click.Add (fun _ -> 
+            AndroidExtensions.promptAsync 
+                this
+                uiCtx
+                "Alert"
+                "Delete all files?"
+                (fun  _ _ -> Storage.deleteFiles())
+                (fun _  _ -> ())
+            )
 
     override this.OnDestroy() = 
        base.OnDestroy()

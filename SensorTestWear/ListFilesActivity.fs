@@ -25,9 +25,10 @@ type WearableListItemLayout(ctx:Context) =
     val mutable name   : TextView 
 
     interface WearableListView.IOnCenterProximityListener with
-        member x.OnCenterPosition(b) = ()
+        member x.OnCenterPosition(b) = 
+            x.name.Animate().Alpha(1.f) |> ignore
            //x.circle.Animate().ScaleX(1.f).ScaleY(1.f).Alpha(1.f) |> ignore
-            //x.name.Animate().ScaleX(1.f).ScaleY(1.f).Alpha(1.f) |> ignore
+           // x.name.Animate().ScaleX(1.f).ScaleY(1.f).Alpha(1.f) |> ignore
         member x.OnNonCenterPosition(b) =
             //x.circle.Animate().ScaleX(0.8f).ScaleY(0.8f).Alpha(0.6f) |> ignore
             x.name.Animate().Alpha(0.6f) |> ignore
@@ -61,8 +62,7 @@ type ListFilesActivity() =
         base.OnCreate(bundle)
         x.SetContentView(Resource_Layout.FileList)
         let l = x.FindViewById<WearableListView>(Resource_Id.times_list_view)
-        let data = [| for i in 1..10 -> sprintf "item %d" i |]
-        let data = Storage.fileList()
+        let data = Storage.fileList() |> Array.map System.IO.Path.GetFileName
         let adapter = new MyAdapter(x,data)
         l.SetAdapter(adapter)
  

@@ -1,38 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-    <Button
-        android:id="@+id/btnSensors"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/scrollView1">
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="List Sensors" />
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:id="@+id/space1" />
-    <Switch
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/swService"
-        android:text="Service" />
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:id="@+id/space1" />
-    <Button
-        android:id="@+id/btnFiles"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Files" />
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:id="@+id/space1" />
-    <Button
-        android:id="@+id/btnDelFiles"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Delete Files" />
-</LinearLayout>
+        android:layout_height="fill_parent">
+        <Button
+            android:id="@+id/btnSensors"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="List Sensors" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:id="@+id/space1" />
+        <Switch
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/swService"
+            android:text="Service" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:id="@+id/space1" />
+        <Button
+            android:id="@+id/btnFiles"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Files" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:id="@+id/space1" />
+        <Button
+            android:id="@+id/btnDelFiles"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Delete Files" />
+    </LinearLayout>
+</ScrollView>

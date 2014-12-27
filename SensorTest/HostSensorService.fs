@@ -6,6 +6,7 @@ open System.Collections.Generic
 open System.Linq
 open System.Text
 open System.IO
+open AndroidExtensions
 
 open Android.App
 open Android.Content
@@ -47,24 +48,6 @@ type HostSensorService() as this =
             wakeLock.Dispose()
         wakeLock <- null
 
-    let sendWearMessage path data =
-        async {
-            try
-            let r = gapi.BlockingConnect(30L,Java.Util.Concurrent.TimeUnit.Seconds)
-            if r.IsSuccess then
-                let pr = WearableClass.NodeApi.GetConnectedNodes(gapi)
-                let nr =  pr.Await().JavaCast<INodeApiGetConnectedNodesResult>()
-                for n in nr.Nodes do
-                    let pr2 = WearableClass.MessageApi.SendMessage(gapi,n.Id,path,data)
-                    let s = pr2.Await(1L,Java.Util.Concurrent.TimeUnit.Seconds)
-                    let r = s.JavaCast<Android.Gms.Wearable.IMessageApiSendMessageResult>()
-                    if not r.Status.IsSuccess then
-                        logI (sprintf "msg send error %d" r.Status.StatusCode)
-                        logI r.Status.StatusMessage
-            with ex -> 
-                    logE ex.Message
-        }
-
     let sendLoop (inbox:MailboxProcessor<_>) =
         async {
             while true do
@@ -72,9 +55,9 @@ type HostSensorService() as this =
                     let! msg  = inbox.Receive()
                     match msg with
                     | Fire (path,data) ->
-                        do! sendWearMessage path data
+                        do! sendWearMessage this path data
                     | Send (path,data,rc) ->
-                        do! sendWearMessage path data
+                        do! sendWearMessage this path data
                         rc.Reply()
                 with ex ->
                     logE ex.Message
@@ -118,12 +101,12 @@ type HostSensorService() as this =
            
     override x.OnDestroy() =
         try 
-            sendWearMessage Constants.p_send_data [||] |> Async.Start
+            //sendWearMessage Constants.p_send_data [||] |> Async.Start
             //Storage.agent.PostAndReply Storage.FClose
             if sendAgent <> Unchecked.defaultof<_> then
                 sendAgent.PostAndReply  (fun rc -> Send (Constants.p_stop,[||],rc))
             releaseWakeLock()
-            cts.CancelAfter(1000)
+            if cts <> Unchecked.defaultof<_> then cts.CancelAfter(1000)
             GlobalState.runningEvent.Trigger(false)
             logI "service closed"
         with ex ->
@@ -131,14 +114,17 @@ type HostSensorService() as this =
         base.OnDestroy()
 
     override x.OnDataChanged(dataEvents) =
-        base.OnDataChanged(dataEvents)
         logI "onDataChanged"
-        let events = FreezableUtils.FreezeIterable (dataEvents)
-        events 
-        |> Seq.cast<Java.Lang.Object>
-        |> Seq.map    (fun i  -> i.JavaCast<IDataEvent>())
-        |> Seq.filter (fun ev -> ev.Type = DataEvent.TypeChanged)
-        |> Seq.map    (fun ev -> ev.DataItem)
-        |> Seq.filter (fun dt -> printfn "%s" dt.Uri.Path; dt.Uri.Path = Constants.p_data_file)
-        |> Seq.iter (DataReceiver.processDataItem x)
+        try
+            let events = FreezableUtils.FreezeIterable (dataEvents)
+            dataEvents.Close()
+            events 
+            |> Seq.cast<Java.Lang.Object>
+            |> Seq.map    (fun i  -> i.JavaCast<IDataEvent>())
+            |> Seq.filter (fun ev -> ev.Type = DataEvent.TypeChanged)
+            |> Seq.map    (fun ev -> ev.DataItem)
+            |> Seq.filter (fun dt -> printfn "Data item %s" dt.Uri.Path; dt.Uri.Path = Constants.p_data_file)
+            |> Seq.iter (DataReceiver.processDataItem x)
+        with ex ->
+           logE ex.Message
  

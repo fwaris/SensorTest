@@ -23,10 +23,10 @@ namespace SensorTestWear
     #nowarn "51" // address-of operator can occur in the code
     #nowarn "1183" // unused 'this' reference
     
-    exception ReturnExceptionc7aae0eb700d427f9810b5ac2e16d539 of obj
-    exception ReturnNoneExceptionc7aae0eb700d427f9810b5ac2e16d539
+    exception ReturnException153cc9f2c1ba41b1b1945fee2eb76d9c of obj
+    exception ReturnNoneException153cc9f2c1ba41b1b1945fee2eb76d9c
     [<AutoOpen>]
-    module FuncConvertFinalOverloadc7aae0eb700d427f9810b5ac2e16d539 =
+    module FuncConvertFinalOverload153cc9f2c1ba41b1b1945fee2eb76d9c =
       // This extension member adds to the FuncConvert type and is the last resort member in the method overloading rules. 
       type global.Microsoft.FSharp.Core.FuncConvert with
           /// A utility function to convert function values from tupled to curried form
@@ -189,107 +189,107 @@ namespace SensorTestWear
         
         (* partial *)Resource_Color () =
             static do Android.Runtime.ResourceIdManager.UpdateIdValues()
-            // aapt resource value: 0x7f05000a
-            static member black = 2131034122
+            // aapt resource value: 0x7f06000a
+            static member black = 2131099658
             
-            // aapt resource value: 0x7f05000b
-            static member blue = 2131034123
+            // aapt resource value: 0x7f06000b
+            static member blue = 2131099659
             
-            // aapt resource value: 0x7f05000c
-            static member card_default_background = 2131034124
+            // aapt resource value: 0x7f06000c
+            static member card_default_background = 2131099660
             
-            // aapt resource value: 0x7f050009
-            static member common_action_bar_splitter = 2131034121
+            // aapt resource value: 0x7f060009
+            static member common_action_bar_splitter = 2131099657
             
-            // aapt resource value: 0x7f050000
-            static member common_signin_btn_dark_text_default = 2131034112
+            // aapt resource value: 0x7f060000
+            static member common_signin_btn_dark_text_default = 2131099648
             
-            // aapt resource value: 0x7f050002
-            static member common_signin_btn_dark_text_disabled = 2131034114
+            // aapt resource value: 0x7f060002
+            static member common_signin_btn_dark_text_disabled = 2131099650
             
-            // aapt resource value: 0x7f050003
-            static member common_signin_btn_dark_text_focused = 2131034115
+            // aapt resource value: 0x7f060003
+            static member common_signin_btn_dark_text_focused = 2131099651
             
-            // aapt resource value: 0x7f050001
-            static member common_signin_btn_dark_text_pressed = 2131034113
+            // aapt resource value: 0x7f060001
+            static member common_signin_btn_dark_text_pressed = 2131099649
             
-            // aapt resource value: 0x7f050008
-            static member common_signin_btn_default_background = 2131034120
+            // aapt resource value: 0x7f060008
+            static member common_signin_btn_default_background = 2131099656
             
-            // aapt resource value: 0x7f050004
-            static member common_signin_btn_light_text_default = 2131034116
+            // aapt resource value: 0x7f060004
+            static member common_signin_btn_light_text_default = 2131099652
             
-            // aapt resource value: 0x7f050006
-            static member common_signin_btn_light_text_disabled = 2131034118
+            // aapt resource value: 0x7f060006
+            static member common_signin_btn_light_text_disabled = 2131099654
             
-            // aapt resource value: 0x7f050007
-            static member common_signin_btn_light_text_focused = 2131034119
+            // aapt resource value: 0x7f060007
+            static member common_signin_btn_light_text_focused = 2131099655
             
-            // aapt resource value: 0x7f050005
-            static member common_signin_btn_light_text_pressed = 2131034117
+            // aapt resource value: 0x7f060005
+            static member common_signin_btn_light_text_pressed = 2131099653
             
-            // aapt resource value: 0x7f050020
-            static member common_signin_btn_text_dark = 2131034144
+            // aapt resource value: 0x7f060020
+            static member common_signin_btn_text_dark = 2131099680
             
-            // aapt resource value: 0x7f050021
-            static member common_signin_btn_text_light = 2131034145
+            // aapt resource value: 0x7f060021
+            static member common_signin_btn_text_light = 2131099681
             
-            // aapt resource value: 0x7f05000d
-            static member dark_blue = 2131034125
+            // aapt resource value: 0x7f06000d
+            static member dark_blue = 2131099661
             
-            // aapt resource value: 0x7f05000e
-            static member dark_grey = 2131034126
+            // aapt resource value: 0x7f06000e
+            static member dark_grey = 2131099662
             
-            // aapt resource value: 0x7f05000f
-            static member disabled_text_light = 2131034127
+            // aapt resource value: 0x7f06000f
+            static member disabled_text_light = 2131099663
             
-            // aapt resource value: 0x7f050010
-            static member dismiss_close = 2131034128
+            // aapt resource value: 0x7f060010
+            static member dismiss_close = 2131099664
             
-            // aapt resource value: 0x7f050011
-            static member dismiss_close_pressed = 2131034129
+            // aapt resource value: 0x7f060011
+            static member dismiss_close_pressed = 2131099665
             
-            // aapt resource value: 0x7f050012
-            static member dismiss_overlay_bg = 2131034130
+            // aapt resource value: 0x7f060012
+            static member dismiss_overlay_bg = 2131099666
             
-            // aapt resource value: 0x7f050013
-            static member green = 2131034131
+            // aapt resource value: 0x7f060013
+            static member green = 2131099667
             
-            // aapt resource value: 0x7f050014
-            static member grey = 2131034132
+            // aapt resource value: 0x7f060014
+            static member grey = 2131099668
             
-            // aapt resource value: 0x7f050015
-            static member light_grey = 2131034133
+            // aapt resource value: 0x7f060015
+            static member light_grey = 2131099669
             
-            // aapt resource value: 0x7f050016
-            static member orange = 2131034134
+            // aapt resource value: 0x7f060016
+            static member orange = 2131099670
             
-            // aapt resource value: 0x7f050017
-            static member primary_text_dark = 2131034135
+            // aapt resource value: 0x7f060017
+            static member primary_text_dark = 2131099671
             
-            // aapt resource value: 0x7f050018
-            static member primary_text_light = 2131034136
+            // aapt resource value: 0x7f060018
+            static member primary_text_light = 2131099672
             
-            // aapt resource value: 0x7f050019
-            static member red = 2131034137
+            // aapt resource value: 0x7f060019
+            static member red = 2131099673
             
-            // aapt resource value: 0x7f05001a
-            static member secondary_text_light = 2131034138
+            // aapt resource value: 0x7f06001a
+            static member secondary_text_light = 2131099674
             
-            // aapt resource value: 0x7f05001b
-            static member semitransparent_grey = 2131034139
+            // aapt resource value: 0x7f06001b
+            static member semitransparent_grey = 2131099675
             
-            // aapt resource value: 0x7f05001f
-            static member text_color = 2131034143
+            // aapt resource value: 0x7f06001f
+            static member text_color = 2131099679
             
-            // aapt resource value: 0x7f05001c
-            static member white = 2131034140
+            // aapt resource value: 0x7f06001c
+            static member white = 2131099676
             
-            // aapt resource value: 0x7f05001d
-            static member wl_blue = 2131034141
+            // aapt resource value: 0x7f06001d
+            static member wl_blue = 2131099677
             
-            // aapt resource value: 0x7f05001e
-            static member wl_gray = 2131034142
+            // aapt resource value: 0x7f06001e
+            static member wl_gray = 2131099678
             (* Member of type 'CodeTypeConstructor' is not supported by the CodeDOM provider and was omitted *)
 
 
@@ -298,23 +298,23 @@ namespace SensorTestWear
         
         (* partial *)Resource_Dimension () =
             static do Android.Runtime.ResourceIdManager.UpdateIdValues()
-            // aapt resource value: 0x7f080000
-            static member card_content_padding_rect_top = 2131230720
+            // aapt resource value: 0x7f090000
+            static member card_content_padding_rect_top = 2131296256
             
-            // aapt resource value: 0x7f080001
-            static member close_button_diameter = 2131230721
+            // aapt resource value: 0x7f090001
+            static member close_button_diameter = 2131296257
             
-            // aapt resource value: 0x7f080002
-            static member dismiss_padding = 2131230722
+            // aapt resource value: 0x7f090002
+            static member dismiss_padding = 2131296258
             
-            // aapt resource value: 0x7f080004
-            static member page_column_margin = 2131230724
+            // aapt resource value: 0x7f090004
+            static member page_column_margin = 2131296260
             
-            // aapt resource value: 0x7f080005
-            static member page_column_margin_round = 2131230725
+            // aapt resource value: 0x7f090005
+            static member page_column_margin_round = 2131296261
             
-            // aapt resource value: 0x7f080003
-            static member page_row_margin = 2131230723
+            // aapt resource value: 0x7f090003
+            static member page_row_margin = 2131296259
             (* Member of type 'CodeTypeConstructor' is not supported by the CodeDOM provider and was omitted *)
 
 
@@ -696,119 +696,119 @@ namespace SensorTestWear
         
         (* partial *)Resource_Id () =
             static do Android.Runtime.ResourceIdManager.UpdateIdValues()
-            // aapt resource value: 0x7f0a000f
-            static member actionButton = 2131361807
+            // aapt resource value: 0x7f0b000f
+            static member actionButton = 2131427343
             
-            // aapt resource value: 0x7f0a0010
-            static member actionText = 2131361808
+            // aapt resource value: 0x7f0b0010
+            static member actionText = 2131427344
             
-            // aapt resource value: 0x7f0a0013
-            static member action_error = 2131361811
+            // aapt resource value: 0x7f0b0013
+            static member action_error = 2131427347
             
-            // aapt resource value: 0x7f0a0015
-            static member action_success = 2131361813
+            // aapt resource value: 0x7f0b0015
+            static member action_success = 2131427349
             
-            // aapt resource value: 0x7f0a0000
-            static member adjust_height = 2131361792
+            // aapt resource value: 0x7f0b0000
+            static member adjust_height = 2131427328
             
-            // aapt resource value: 0x7f0a0001
-            static member adjust_width = 2131361793
+            // aapt resource value: 0x7f0b0001
+            static member adjust_width = 2131427329
             
-            // aapt resource value: 0x7f0a0007
-            static member all = 2131361799
+            // aapt resource value: 0x7f0b0007
+            static member all = 2131427335
             
-            // aapt resource value: 0x7f0a0016
-            static member animation = 2131361814
+            // aapt resource value: 0x7f0b0016
+            static member animation = 2131427350
             
-            // aapt resource value: 0x7f0a0008
-            static member bottom = 2131361800
+            // aapt resource value: 0x7f0b0008
+            static member bottom = 2131427336
             
-            // aapt resource value: 0x7f0a0022
-            static member btnDelFiles = 2131361826
+            // aapt resource value: 0x7f0b0022
+            static member btnDelFiles = 2131427362
             
-            // aapt resource value: 0x7f0a0021
-            static member btnFiles = 2131361825
+            // aapt resource value: 0x7f0b0021
+            static member btnFiles = 2131427361
             
-            // aapt resource value: 0x7f0a001e
-            static member btnSensors = 2131361822
+            // aapt resource value: 0x7f0b001e
+            static member btnSensors = 2131427358
             
-            // aapt resource value: 0x7f0a000c
-            static member center = 2131361804
+            // aapt resource value: 0x7f0b000c
+            static member center = 2131427340
             
-            // aapt resource value: 0x7f0a000d
-            static member center_horizontal = 2131361805
+            // aapt resource value: 0x7f0b000d
+            static member center_horizontal = 2131427341
             
-            // aapt resource value: 0x7f0a000e
-            static member center_vertical = 2131361806
+            // aapt resource value: 0x7f0b000e
+            static member center_vertical = 2131427342
             
-            // aapt resource value: 0x7f0a001b
-            static member circle = 2131361819
+            // aapt resource value: 0x7f0b001b
+            static member circle = 2131427355
             
-            // aapt resource value: 0x7f0a0011
-            static member confText = 2131361809
+            // aapt resource value: 0x7f0b0011
+            static member confText = 2131427345
             
-            // aapt resource value: 0x7f0a0012
-            static member delayed_confirm = 2131361810
+            // aapt resource value: 0x7f0b0012
+            static member delayed_confirm = 2131427346
             
-            // aapt resource value: 0x7f0a0019
-            static member dismiss_overlay_button = 2131361817
+            // aapt resource value: 0x7f0b0019
+            static member dismiss_overlay_button = 2131427353
             
-            // aapt resource value: 0x7f0a0018
-            static member dismiss_overlay_explain = 2131361816
+            // aapt resource value: 0x7f0b0018
+            static member dismiss_overlay_explain = 2131427352
             
-            // aapt resource value: 0x7f0a0014
-            static member error_message = 2131361812
+            // aapt resource value: 0x7f0b0014
+            static member error_message = 2131427348
             
-            // aapt resource value: 0x7f0a0003
-            static member hybrid = 2131361795
+            // aapt resource value: 0x7f0b0003
+            static member hybrid = 2131427331
             
-            // aapt resource value: 0x7f0a0009
-            static member left = 2131361801
+            // aapt resource value: 0x7f0b0009
+            static member left = 2131427337
             
-            // aapt resource value: 0x7f0a0017
-            static member message = 2131361815
+            // aapt resource value: 0x7f0b0017
+            static member message = 2131427351
             
-            // aapt resource value: 0x7f0a001c
-            static member name = 2131361820
+            // aapt resource value: 0x7f0b001c
+            static member name = 2131427356
             
-            // aapt resource value: 0x7f0a0002
-            static member none = 2131361794
+            // aapt resource value: 0x7f0b0002
+            static member none = 2131427330
             
-            // aapt resource value: 0x7f0a0004
-            static member normal = 2131361796
+            // aapt resource value: 0x7f0b0004
+            static member normal = 2131427332
             
-            // aapt resource value: 0x7f0a0023
-            static member pager = 2131361827
+            // aapt resource value: 0x7f0b0023
+            static member pager = 2131427363
             
-            // aapt resource value: 0x7f0a000a
-            static member right = 2131361802
+            // aapt resource value: 0x7f0b000a
+            static member right = 2131427338
             
-            // aapt resource value: 0x7f0a0005
-            static member satellite = 2131361797
+            // aapt resource value: 0x7f0b0005
+            static member satellite = 2131427333
             
-            // aapt resource value: 0x7f0a001d
-            static member scrollView1 = 2131361821
+            // aapt resource value: 0x7f0b001d
+            static member scrollView1 = 2131427357
             
-            // aapt resource value: 0x7f0a001f
-            static member space1 = 2131361823
+            // aapt resource value: 0x7f0b001f
+            static member space1 = 2131427359
             
-            // aapt resource value: 0x7f0a0020
-            static member swService = 2131361824
+            // aapt resource value: 0x7f0b0020
+            static member swService = 2131427360
             
-            // aapt resource value: 0x7f0a0006
-            static member terrain = 2131361798
+            // aapt resource value: 0x7f0b0006
+            static member terrain = 2131427334
             
-            // aapt resource value: 0x7f0a0025
-            static member text = 2131361829
+            // aapt resource value: 0x7f0b0025
+            static member text = 2131427365
             
-            // aapt resource value: 0x7f0a001a
-            static member times_list_view = 2131361818
+            // aapt resource value: 0x7f0b001a
+            static member times_list_view = 2131427354
             
-            // aapt resource value: 0x7f0a0024
-            static member title = 2131361828
+            // aapt resource value: 0x7f0b0024
+            static member title = 2131427364
             
-            // aapt resource value: 0x7f0a000b
-            static member top = 2131361803
+            // aapt resource value: 0x7f0b000b
+            static member top = 2131427339
             (* Member of type 'CodeTypeConstructor' is not supported by the CodeDOM provider and was omitted *)
 
 
@@ -817,8 +817,8 @@ namespace SensorTestWear
         
         (* partial *)Resource_Integer () =
             static do Android.Runtime.ResourceIdManager.UpdateIdValues()
-            // aapt resource value: 0x7f070000
-            static member google_play_services_version = 2131165184
+            // aapt resource value: 0x7f080000
+            static member google_play_services_version = 2131230720
             (* Member of type 'CodeTypeConstructor' is not supported by the CodeDOM provider and was omitted *)
 
 
@@ -867,8 +867,8 @@ namespace SensorTestWear
         
         (* partial *)Resource_Raw () =
             static do Android.Runtime.ResourceIdManager.UpdateIdValues()
-            // aapt resource value: 0x7f040000
-            static member gtm_analytics = 2130968576
+            // aapt resource value: 0x7f050000
+            static member gtm_analytics = 2131034112
             (* Member of type 'CodeTypeConstructor' is not supported by the CodeDOM provider and was omitted *)
 
 
@@ -877,95 +877,95 @@ namespace SensorTestWear
         
         (* partial *)Resource_String () =
             static do Android.Runtime.ResourceIdManager.UpdateIdValues()
-            // aapt resource value: 0x7f06001d
-            static member app_name = 2131099677
+            // aapt resource value: 0x7f07001d
+            static member app_name = 2131165213
             
-            // aapt resource value: 0x7f060003
-            static member common_android_wear_notification_needs_update_text = 2131099651
+            // aapt resource value: 0x7f070003
+            static member common_android_wear_notification_needs_update_text = 2131165187
             
-            // aapt resource value: 0x7f060010
-            static member common_android_wear_update_text = 2131099664
+            // aapt resource value: 0x7f070010
+            static member common_android_wear_update_text = 2131165200
             
-            // aapt resource value: 0x7f06000e
-            static member common_android_wear_update_title = 2131099662
+            // aapt resource value: 0x7f07000e
+            static member common_android_wear_update_title = 2131165198
             
-            // aapt resource value: 0x7f06000c
-            static member common_google_play_services_enable_button = 2131099660
+            // aapt resource value: 0x7f07000c
+            static member common_google_play_services_enable_button = 2131165196
             
-            // aapt resource value: 0x7f06000b
-            static member common_google_play_services_enable_text = 2131099659
+            // aapt resource value: 0x7f07000b
+            static member common_google_play_services_enable_text = 2131165195
             
-            // aapt resource value: 0x7f06000a
-            static member common_google_play_services_enable_title = 2131099658
+            // aapt resource value: 0x7f07000a
+            static member common_google_play_services_enable_title = 2131165194
             
-            // aapt resource value: 0x7f060005
-            static member common_google_play_services_error_notification_requested_by_msg = 2131099653
+            // aapt resource value: 0x7f070005
+            static member common_google_play_services_error_notification_requested_by_msg = 2131165189
             
-            // aapt resource value: 0x7f060009
-            static member common_google_play_services_install_button = 2131099657
+            // aapt resource value: 0x7f070009
+            static member common_google_play_services_install_button = 2131165193
             
-            // aapt resource value: 0x7f060007
-            static member common_google_play_services_install_text_phone = 2131099655
+            // aapt resource value: 0x7f070007
+            static member common_google_play_services_install_text_phone = 2131165191
             
-            // aapt resource value: 0x7f060008
-            static member common_google_play_services_install_text_tablet = 2131099656
+            // aapt resource value: 0x7f070008
+            static member common_google_play_services_install_text_tablet = 2131165192
             
-            // aapt resource value: 0x7f060006
-            static member common_google_play_services_install_title = 2131099654
+            // aapt resource value: 0x7f070006
+            static member common_google_play_services_install_title = 2131165190
             
-            // aapt resource value: 0x7f060014
-            static member common_google_play_services_invalid_account_text = 2131099668
+            // aapt resource value: 0x7f070014
+            static member common_google_play_services_invalid_account_text = 2131165204
             
-            // aapt resource value: 0x7f060013
-            static member common_google_play_services_invalid_account_title = 2131099667
+            // aapt resource value: 0x7f070013
+            static member common_google_play_services_invalid_account_title = 2131165203
             
-            // aapt resource value: 0x7f060004
-            static member common_google_play_services_needs_enabling_title = 2131099652
+            // aapt resource value: 0x7f070004
+            static member common_google_play_services_needs_enabling_title = 2131165188
             
-            // aapt resource value: 0x7f060012
-            static member common_google_play_services_network_error_text = 2131099666
+            // aapt resource value: 0x7f070012
+            static member common_google_play_services_network_error_text = 2131165202
             
-            // aapt resource value: 0x7f060011
-            static member common_google_play_services_network_error_title = 2131099665
+            // aapt resource value: 0x7f070011
+            static member common_google_play_services_network_error_title = 2131165201
             
-            // aapt resource value: 0x7f060001
-            static member common_google_play_services_notification_needs_installation_title = 2131099649
+            // aapt resource value: 0x7f070001
+            static member common_google_play_services_notification_needs_installation_title = 2131165185
             
-            // aapt resource value: 0x7f060002
-            static member common_google_play_services_notification_needs_update_title = 2131099650
+            // aapt resource value: 0x7f070002
+            static member common_google_play_services_notification_needs_update_title = 2131165186
             
-            // aapt resource value: 0x7f060000
-            static member common_google_play_services_notification_ticker = 2131099648
+            // aapt resource value: 0x7f070000
+            static member common_google_play_services_notification_ticker = 2131165184
             
-            // aapt resource value: 0x7f060015
-            static member common_google_play_services_unknown_issue = 2131099669
+            // aapt resource value: 0x7f070015
+            static member common_google_play_services_unknown_issue = 2131165205
             
-            // aapt resource value: 0x7f060017
-            static member common_google_play_services_unsupported_text = 2131099671
+            // aapt resource value: 0x7f070017
+            static member common_google_play_services_unsupported_text = 2131165207
             
-            // aapt resource value: 0x7f060016
-            static member common_google_play_services_unsupported_title = 2131099670
+            // aapt resource value: 0x7f070016
+            static member common_google_play_services_unsupported_title = 2131165206
             
-            // aapt resource value: 0x7f060018
-            static member common_google_play_services_update_button = 2131099672
+            // aapt resource value: 0x7f070018
+            static member common_google_play_services_update_button = 2131165208
             
-            // aapt resource value: 0x7f06000f
-            static member common_google_play_services_update_text = 2131099663
+            // aapt resource value: 0x7f07000f
+            static member common_google_play_services_update_text = 2131165199
             
-            // aapt resource value: 0x7f06000d
-            static member common_google_play_services_update_title = 2131099661
+            // aapt resource value: 0x7f07000d
+            static member common_google_play_services_update_title = 2131165197
             
-            // aapt resource value: 0x7f06001b
-            static member common_open_on_phone = 2131099675
+            // aapt resource value: 0x7f07001b
+            static member common_open_on_phone = 2131165211
             
-            // aapt resource value: 0x7f060019
-            static member common_signin_button_text = 2131099673
+            // aapt resource value: 0x7f070019
+            static member common_signin_button_text = 2131165209
             
-            // aapt resource value: 0x7f06001a
-            static member common_signin_button_text_long = 2131099674
+            // aapt resource value: 0x7f07001a
+            static member common_signin_button_text_long = 2131165210
             
-            // aapt resource value: 0x7f06001c
-            static member hello = 2131099676
+            // aapt resource value: 0x7f07001c
+            static member hello = 2131165212
             (* Member of type 'CodeTypeConstructor' is not supported by the CodeDOM provider and was omitted *)
 
 
@@ -974,50 +974,60 @@ namespace SensorTestWear
         
         (* partial *)Resource_Style () =
             static do Android.Runtime.ResourceIdManager.UpdateIdValues()
-            // aapt resource value: 0x7f090000
-            static member CardText = 2131296256
+            // aapt resource value: 0x7f0a0000
+            static member CardText = 2131361792
             
-            // aapt resource value: 0x7f090001
-            static member CardTitle = 2131296257
+            // aapt resource value: 0x7f0a0001
+            static member CardTitle = 2131361793
             
-            // aapt resource value: 0x7f090002
-            static member DismissOverlayText = 2131296258
+            // aapt resource value: 0x7f0a0002
+            static member DismissOverlayText = 2131361794
             
-            // aapt resource value: 0x7f090003
-            static member DotsPageIndicatorStyle = 2131296259
+            // aapt resource value: 0x7f0a0003
+            static member DotsPageIndicatorStyle = 2131361795
             
-            // aapt resource value: 0x7f090004
-            static member TextAppearance_Wearable_Large = 2131296260
+            // aapt resource value: 0x7f0a0004
+            static member TextAppearance_Wearable_Large = 2131361796
             
-            // aapt resource value: 0x7f090005
-            static member TextAppearance_Wearable_Medium = 2131296261
+            // aapt resource value: 0x7f0a0005
+            static member TextAppearance_Wearable_Medium = 2131361797
             
-            // aapt resource value: 0x7f090006
-            static member TextAppearance_Wearable_Small = 2131296262
+            // aapt resource value: 0x7f0a0006
+            static member TextAppearance_Wearable_Small = 2131361798
             
-            // aapt resource value: 0x7f090007
-            static member TextView_Large = 2131296263
+            // aapt resource value: 0x7f0a0007
+            static member TextView_Large = 2131361799
             
-            // aapt resource value: 0x7f090008
-            static member TextView_Large_Light = 2131296264
+            // aapt resource value: 0x7f0a0008
+            static member TextView_Large_Light = 2131361800
             
-            // aapt resource value: 0x7f090009
-            static member TextView_Medium = 2131296265
+            // aapt resource value: 0x7f0a0009
+            static member TextView_Medium = 2131361801
             
-            // aapt resource value: 0x7f09000a
-            static member TextView_Medium_Light = 2131296266
+            // aapt resource value: 0x7f0a000a
+            static member TextView_Medium_Light = 2131361802
             
-            // aapt resource value: 0x7f09000b
-            static member TextView_Small = 2131296267
+            // aapt resource value: 0x7f0a000b
+            static member TextView_Small = 2131361803
             
-            // aapt resource value: 0x7f09000c
-            static member TextView_Small_Light = 2131296268
+            // aapt resource value: 0x7f0a000c
+            static member TextView_Small_Light = 2131361804
             
-            // aapt resource value: 0x7f09000d
-            static member Theme_Wearable = 2131296269
+            // aapt resource value: 0x7f0a000d
+            static member Theme_Wearable = 2131361805
             
-            // aapt resource value: 0x7f09000e
-            static member Theme_Wearable_Modal = 2131296270
+            // aapt resource value: 0x7f0a000e
+            static member Theme_Wearable_Modal = 2131361806
+            (* Member of type 'CodeTypeConstructor' is not supported by the CodeDOM provider and was omitted *)
+
+
+    
+    and
+        
+        (* partial *)Resource_Xml () =
+            static do Android.Runtime.ResourceIdManager.UpdateIdValues()
+            // aapt resource value: 0x7f040000
+            static member file_paths = 2130968576
             (* Member of type 'CodeTypeConstructor' is not supported by the CodeDOM provider and was omitted *)
 
 

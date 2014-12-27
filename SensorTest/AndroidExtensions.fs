@@ -14,6 +14,11 @@ open Android.Util
 open Android.Views
 open Android.Widget
 open Android.Support.Wearable.Views
+open Android.Gms.Common.Apis
+open Android.Gms.Common.Data
+open Android.Gms.Wearable
+open Android.Hardware
+open Android.Gms.Common.Apis
 
 
 let mapRunning serviceInfos =
@@ -53,3 +58,23 @@ let notifyAsync
         with ex ->  logE ex.Message
     }
     |> Async.Start
+
+let sendWearMessage (x:Context) path data =
+    async {
+        try
+        let bldr = new GoogleApiClientBuilder(x)
+        let gapi = bldr.AddApi(WearableClass.Api).Build()
+        let r = gapi.BlockingConnect(30L,Java.Util.Concurrent.TimeUnit.Seconds)
+        if r.IsSuccess then
+            let pr = WearableClass.NodeApi.GetConnectedNodes(gapi)
+            let nr =  pr.Await().JavaCast<INodeApiGetConnectedNodesResult>()
+            for n in nr.Nodes do
+                let pr2 = WearableClass.MessageApi.SendMessage(gapi,n.Id,path,data)
+                let s = pr2.Await(1L,Java.Util.Concurrent.TimeUnit.Seconds)
+                let r = s.JavaCast<Android.Gms.Wearable.IMessageApiSendMessageResult>()
+                if not r.Status.IsSuccess then
+                    logI (sprintf "msg send error %d" r.Status.StatusCode)
+                    logI r.Status.StatusMessage
+        with ex -> 
+                logE ex.Message
+    }

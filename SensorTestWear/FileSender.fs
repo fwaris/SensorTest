@@ -17,6 +17,7 @@ open Android.Widget
 open Android.Gms.Wearable
 open Android.Hardware
 open Android.Gms.Common.Apis
+open Android.Gms.Common
 
 type ResultCB(fDone) =
     inherit Java.Lang.Object() 
@@ -25,17 +26,21 @@ type ResultCB(fDone) =
             let r = result.JavaCast<IDataApiDataItemResult>();
             fDone r.Status
 
-let sendFile apiClient filePath =
+let sendFile (ctx:Context) apiClient filePath =
     logI ("sending file " + filePath)
     async {
         try
-            let dataItem = PutDataRequest.Create(Constants.p_data_file)
+            let dataRequest = PutDataRequest.Create(Constants.p_data_file)
             let fileName = Path.GetFileName(filePath)
-            let asset = Asset.CreateFromUri(Android.Net.Uri.Parse("file://" + filePath))
-            dataItem.PutAsset(fileName,asset) |> ignore
+            let contentUri = Android.Net.Uri.Parse(Storage.contentUri fileName)
+            let permissionFlags = ActivityFlags.GrantReadUriPermission ||| ActivityFlags.GrantPersistableUriPermission
+            let plyServPkg = GooglePlayServicesUtil.GooglePlayServicesPackage
+            ctx.GrantUriPermission(plyServPkg,contentUri,permissionFlags)
+            let asset = Asset.CreateFromUri(contentUri)
+            dataRequest.PutAsset(fileName,asset) |> ignore
             let ev = new ManualResetEvent(false)
             let result = ref (Some "waiting")
-            let pendingRequest = WearableClass.DataApi.PutDataItem(apiClient,dataItem)
+            let pendingRequest = WearableClass.DataApi.PutDataItem(apiClient,dataRequest)
             pendingRequest.SetResultCallback(new ResultCB(fun r -> 
                 if r.IsSuccess then
                     result:= None
@@ -43,15 +48,14 @@ let sendFile apiClient filePath =
                     result := Some r.StatusMessage
                 ev.Set() |> ignore
                 ))
-            let! isDone = Async.AwaitWaitHandle(ev, 15 * 60 * 1000)
+            let! isDone = Async.AwaitWaitHandle(ev, 1 * 60 * 1000)
             ev.Dispose()
             if not isDone then
                 logE (sprintf "Timeout sending file %s" filePath)
             else
                 match !result with
                 | None -> 
-                    logI (sprintf "file sent %s" filePath)
-                    File.Delete filePath
+                    logI (sprintf "file dataitem sent %s" filePath)
                 | Some err -> logE (sprintf "Error sending file %s: %s" filePath err)
         with ex ->
             logE (sprintf "Error sending file %s: %s" filePath ex.Message)
@@ -64,10 +68,15 @@ let sendFiles (ctx:Context) dir =
         |> Seq.toList
     if files.Count() > 0 then
         let bldr = new GoogleApiClientBuilder(ctx)
-        let apiClient = bldr.AddApi(WearableClass.Api).Build()
-        files 
-        |> List.map (sendFile apiClient)
-        |> Async.Parallel
-        |> Async.Ignore
-        |> Async.Start
+        let gapi = bldr.AddApi(WearableClass.Api).Build()
+        if not gapi.IsConnected then
+            let r = gapi.BlockingConnect(30L,Java.Util.Concurrent.TimeUnit.Seconds)
+            if r.IsSuccess then
+                files 
+                |> List.map (sendFile ctx gapi)
+                |> Async.Parallel
+                |> Async.Ignore
+                |> Async.Start
+            else
+                logE (sprintf "unable to send files error code: %d" r.ErrorCode)
  

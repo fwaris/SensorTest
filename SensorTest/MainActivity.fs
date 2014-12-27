@@ -67,6 +67,7 @@ type MainActivity() =
         let spnFiles    = this.FindViewById<Spinner>(Resource_Id.spnFiles)
         let switch      = this.FindViewById<Switch>(Resource_Id.swService)
         let snsrList    = this.FindViewById<ListView>(Resource_Id.sensorList)
+        let btnTxFiles  = this.FindViewById<Button>(Resource_Id.btnTransferFiles)
         //
         let adapter = new ArrayAdapter<string>(this,Android.Resource.Layout.SimpleListItem1,filePrefixes)
         spnFiles.Adapter <- adapter
@@ -92,6 +93,8 @@ type MainActivity() =
                 Storage.copyFile this uiCtx (fun _ _ -> btncopy.Enabled <- true)
 
             )
+        btnTxFiles.Click.Add(fun _ -> AndroidExtensions.sendWearMessage this Constants.p_send_data [||] |> Async.Start)
+           
         updateService this snsrList switch
         subscription <- GlobalState.isRunning.Subscribe(fun running -> 
             logI (sprintf "global state changed: %A" running)

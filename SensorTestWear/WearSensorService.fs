@@ -150,6 +150,7 @@ type WearSensorService() as this =
             logE ex.Message
 
     override x.OnMessageReceived(msg) =
+        try
             let d = msg.GetData()
             let p = msg.Path
             let s = msg.SourceNodeId
@@ -166,14 +167,16 @@ type WearSensorService() as this =
                 FileSender.sendFiles x Storage.data_directory
             | p -> 
                 logE (sprintf "invalid path %s" p)
-           
+        with ex ->
+            logE ex.Message
+                           
     override x.OnDestroy() =
         try 
             unregister() 
             if storageAgent <> Unchecked.defaultof<_> then 
                 storageAgent.PostAndReply Storage.FClose
             releaseWakeLock()
-            cts.Cancel()
+            if cts <> Unchecked.defaultof<_> then cts.Cancel()
             GlobalState.runningEvent.Trigger(false)
             messageSendAgent <- Unchecked.defaultof<_>
             storageAgent <- Unchecked.defaultof<_>

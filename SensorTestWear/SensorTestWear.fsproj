@@ -99,9 +99,13 @@
     <AndroidResource Include="Resources\layout\ListItemImageText.xml" />
     <AndroidResource Include="Resources\layout\ListItemText.axml" />
     <AndroidResource Include="Resources\layout\Confirmation.axml" />
+    <AndroidResource Include="Resources\xml\file_paths.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\AboutAssets.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.FSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Resources\xml\" />
+  </ItemGroup>
 </Project>

@@ -4,8 +4,10 @@ open System
 open System.Collections.Generic
 open Extensions
 
+let datadir = "data"
 let personalDir = Environment.GetFolderPath(Environment.SpecialFolder.Personal)
-let data_directory = Path.Combine(personalDir,"data")
+let data_directory = Path.Combine(personalDir,datadir)
+let contentUri = sprintf "content://fw.sensor.test.fileprovider/%s/%s" datadir
 let temp_ext = "._csv"
 let csv_ext = ".csv"
 

@@ -16,20 +16,21 @@ open Android.Widget
 open Android.Gms.Wearable
 open Android.Hardware
 open Android.Gms.Common.Apis
+open Android.Gms.Common.Data
 
-type ResultCB() =
-    inherit Java.Lang.Object() 
-    interface IResultCallback with
-        member x.OnResult(a) =
-            let r = a
-            () 
+module ServiceContants =
+    let defaultSensors = 
+            [|
+                SensorType.Accelerometer; SensorType.Gyroscope; 
+                SensorType.LinearAcceleration
+                SensorType.RotationVector; SensorType.Gravity
+            |]
 
 [<Service>] 
 [<IntentFilter([|WearableListenerService.BindListenerIntentAction|])>]
 type WearSensorService() as this = 
     inherit WearableListenerService()
     let mutable snsrs: Sensor array  = Unchecked.defaultof<_>
-    let mutable gapi : IGoogleApiClient = Unchecked.defaultof<_>
     let mutable nodeId = ""
     let mutable wakeLock:PowerManager.WakeLock = null
     let mutable cts = Unchecked.defaultof<_>
@@ -64,36 +65,12 @@ type WearSensorService() as this =
             wakeLock.Dispose()
         wakeLock <- null
 
-    let _sendWearMsg path data =
-        let pr = WearableClass.NodeApi.GetConnectedNodes(gapi)
-        let nr =  pr.Await().JavaCast<INodeApiGetConnectedNodesResult>()
-        for n in nr.Nodes do
-            let pr2 = WearableClass.MessageApi.SendMessage(gapi,n.Id,path,data)
-            let s = pr2.Await(1L,Java.Util.Concurrent.TimeUnit.Seconds)
-            let r = s.JavaCast<Android.Gms.Wearable.IMessageApiSendMessageResult>()
-            if not r.Status.IsSuccess then
-                logI (sprintf "msg send error %d" r.Status.StatusCode)
-                logI r.Status.StatusMessage
-
-    let sendWearMessage path data =
-        async {
-            try
-                if not gapi.IsConnected then
-                    let r = gapi.BlockingConnect(30L,Java.Util.Concurrent.TimeUnit.Seconds)
-                    if r.IsSuccess then
-                        _sendWearMsg path data
-                else
-                    _sendWearMsg path data
-            with ex -> 
-                    logE ex.Message
-        }
-
     let sendLoop (inbox:MailboxProcessor<byte array>) =
         async {
             while true do
                 try 
                     let! msg = inbox.Receive()
-                    do! sendWearMessage Constants.sensors msg
+                    do! GmsExtensions.sendWearMessage Constants.sensors msg
                 with ex ->
                     logE ex.Message
          }
@@ -129,19 +106,18 @@ type WearSensorService() as this =
 
     override x.OnCreate() = 
         base.OnCreate()
-        let bldr = new GoogleApiClientBuilder(x)
-        gapi <- bldr.AddApi(WearableClass.Api).Build()
 
     override x.OnStart(intnt,id) =
         base.OnStart(intnt,id)
         try
             let data = intnt.GetByteArrayExtra(Constants.sensors)
             let sensors = data |> Serdes.bytesToIntArray |> Array.map enum<SensorType>
+            let sensors = if Array.isEmpty sensors then ServiceContants.defaultSensors else sensors
             acquireWakeLock()
             cts <- new System.Threading.CancellationTokenSource()
             messageSendAgent <- MailboxProcessor.Start(sendLoop,cts.Token)
             storageAgent <- MailboxProcessor.Start(Storage.writeLoop,cts.Token)
-            storageAgent.Post (Storage.FOpen "twist")
+            storageAgent.Post (Storage.FOpen GlobalState.filenameprefix)
             Storage.rollover (5000*60) storageAgent |> Async.Start
             register sensors
             GlobalState.runningEvent.Trigger(true)
@@ -164,7 +140,7 @@ type WearSensorService() as this =
             | Constants.p_stop ->
                 this.StopSelf()
             | Constants.p_send_data ->
-                FileSender.sendFiles x Storage.data_directory
+                FileSender.checkSendFiles Storage.data_directory
             | p -> 
                 logE (sprintf "invalid path %s" p)
         with ex ->
@@ -185,6 +161,21 @@ type WearSensorService() as this =
             logE (sprintf "error stopping service %s" ex.Message)
         base.OnDestroy()
 
+    override x.OnDataChanged(eventBuffer) =
+        logI "onDataChanged"
+        try
+            let dataEvents = [for i in 0..eventBuffer.Count-1 -> eventBuffer.Get(i).JavaCast<IDataEvent>()]
+            let files =
+                dataEvents
+                |> Seq.filter (fun ev -> ev.Type = DataEvent.TypeDeleted)
+                |> Seq.map    (fun ev -> ev.DataItem.Uri.Path)
+                |> Seq.map    (fun p  -> p.Remove(0,Constants.p_data_file.Length + 1))
+                |> Seq.toList
+            eventBuffer.Close()
+            FileSender.deleteFiles files Storage.data_directory
+        with ex ->
+           eventBuffer.Close()
+           logE ex.Message
 
             
 

@@ -13,7 +13,6 @@ open Android.Runtime
 open Android.Util
 open Android.Views
 open Android.Widget
-open Android.Support.Wearable.Views
 
 let mapRunning serviceInfos =
     let ctx = Android.App.Application.Context
@@ -75,3 +74,4 @@ let promptAsync
         with ex -> logE (sprintf "promptAsync %s" ex.Message)
     }
     |> Async.Start
+

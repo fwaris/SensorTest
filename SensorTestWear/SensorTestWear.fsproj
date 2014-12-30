@@ -70,6 +70,7 @@
     <Compile Include="Properties\AssemblyInfo.fs" />
     <Compile Include="Resources\Resource.designer.fs" />
     <Compile Include="AndroidExtensions.fs" />
+    <Compile Include="GmsExtensions.fs" />
     <Compile Include="GlobalState.fs" />
     <Compile Include="Constants.fs" />
     <Compile Include="Serdes.fs" />

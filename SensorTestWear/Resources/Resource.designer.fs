@@ -23,10 +23,10 @@ namespace SensorTestWear
     #nowarn "51" // address-of operator can occur in the code
     #nowarn "1183" // unused 'this' reference
     
-    exception ReturnException153cc9f2c1ba41b1b1945fee2eb76d9c of obj
-    exception ReturnNoneException153cc9f2c1ba41b1b1945fee2eb76d9c
+    exception ReturnException053009ad16214213a43f1c92a5fb5f6a of obj
+    exception ReturnNoneException053009ad16214213a43f1c92a5fb5f6a
     [<AutoOpen>]
-    module FuncConvertFinalOverload153cc9f2c1ba41b1b1945fee2eb76d9c =
+    module FuncConvertFinalOverload053009ad16214213a43f1c92a5fb5f6a =
       // This extension member adds to the FuncConvert type and is the last resort member in the method overloading rules. 
       type global.Microsoft.FSharp.Core.FuncConvert with
           /// A utility function to convert function values from tupled to curried form
@@ -723,11 +723,11 @@ namespace SensorTestWear
             // aapt resource value: 0x7f0b0008
             static member bottom = 2131427336
             
-            // aapt resource value: 0x7f0b0022
-            static member btnDelFiles = 2131427362
+            // aapt resource value: 0x7f0b0025
+            static member btnDelFiles = 2131427365
             
-            // aapt resource value: 0x7f0b0021
-            static member btnFiles = 2131427361
+            // aapt resource value: 0x7f0b0024
+            static member btnFiles = 2131427364
             
             // aapt resource value: 0x7f0b001e
             static member btnSensors = 2131427358
@@ -765,6 +765,9 @@ namespace SensorTestWear
             // aapt resource value: 0x7f0b0009
             static member left = 2131427337
             
+            // aapt resource value: 0x7f0b0021
+            static member linearLayout1 = 2131427361
+            
             // aapt resource value: 0x7f0b0017
             static member message = 2131427351
             
@@ -777,8 +780,8 @@ namespace SensorTestWear
             // aapt resource value: 0x7f0b0004
             static member normal = 2131427332
             
-            // aapt resource value: 0x7f0b0023
-            static member pager = 2131427363
+            // aapt resource value: 0x7f0b0026
+            static member pager = 2131427366
             
             // aapt resource value: 0x7f0b000a
             static member right = 2131427338
@@ -792,20 +795,26 @@ namespace SensorTestWear
             // aapt resource value: 0x7f0b001f
             static member space1 = 2131427359
             
+            // aapt resource value: 0x7f0b0023
+            static member spnFiles = 2131427363
+            
             // aapt resource value: 0x7f0b0020
             static member swService = 2131427360
             
             // aapt resource value: 0x7f0b0006
             static member terrain = 2131427334
             
-            // aapt resource value: 0x7f0b0025
-            static member text = 2131427365
+            // aapt resource value: 0x7f0b0028
+            static member text = 2131427368
+            
+            // aapt resource value: 0x7f0b0022
+            static member textView1 = 2131427362
             
             // aapt resource value: 0x7f0b001a
             static member times_list_view = 2131427354
             
-            // aapt resource value: 0x7f0b0024
-            static member title = 2131427364
+            // aapt resource value: 0x7f0b0027
+            static member title = 2131427367
             
             // aapt resource value: 0x7f0b000b
             static member top = 2131427339

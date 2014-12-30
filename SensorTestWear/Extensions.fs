@@ -1,6 +1,6 @@
 ﻿module Extensions
 open System
-let tag = "fw.sensor.test"
+let tag = "fw.sensor.wear"
 let logI d = 
     Android.Util.Log.Info(tag,d)  |> ignore
 let logE d = Android.Util.Log.Error(tag,d) |> ignore

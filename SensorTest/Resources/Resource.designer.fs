@@ -23,10 +23,10 @@ namespace SensorTest
     #nowarn "51" // address-of operator can occur in the code
     #nowarn "1183" // unused 'this' reference
     
-    exception ReturnException16b3dc62c26a4683b4babfdf8993eb61 of obj
-    exception ReturnNoneException16b3dc62c26a4683b4babfdf8993eb61
+    exception ReturnException1078ad2b84f54becbf7db17a85f48f71 of obj
+    exception ReturnNoneException1078ad2b84f54becbf7db17a85f48f71
     [<AutoOpen>]
-    module FuncConvertFinalOverload16b3dc62c26a4683b4babfdf8993eb61 =
+    module FuncConvertFinalOverload1078ad2b84f54becbf7db17a85f48f71 =
       // This extension member adds to the FuncConvert type and is the last resort member in the method overloading rules. 
       type global.Microsoft.FSharp.Core.FuncConvert with
           /// A utility function to convert function values from tupled to curried form
@@ -684,11 +684,14 @@ namespace SensorTest
             // aapt resource value: 0x7f0b0008
             static member bottom = 2131427336
             
-            // aapt resource value: 0x7f0b001d
-            static member btnCopy = 2131427357
+            // aapt resource value: 0x7f0b0019
+            static member btnCopy = 2131427353
             
-            // aapt resource value: 0x7f0b001c
-            static member btnTransferFiles = 2131427356
+            // aapt resource value: 0x7f0b0018
+            static member btnTransferFiles = 2131427352
+            
+            // aapt resource value: 0x7f0b0017
+            static member btnTrigger = 2131427351
             
             // aapt resource value: 0x7f0b000c
             static member center = 2131427340
@@ -714,9 +717,6 @@ namespace SensorTest
             // aapt resource value: 0x7f0b0009
             static member left = 2131427337
             
-            // aapt resource value: 0x7f0b0018
-            static member linearLayout1 = 2131427352
-            
             // aapt resource value: 0x7f0b0013
             static member message = 2131427347
             
@@ -735,26 +735,14 @@ namespace SensorTest
             // aapt resource value: 0x7f0b0016
             static member scrollView1 = 2131427350
             
-            // aapt resource value: 0x7f0b001b
-            static member sensorList = 2131427355
-            
-            // aapt resource value: 0x7f0b001a
-            static member spnFiles = 2131427354
-            
-            // aapt resource value: 0x7f0b0017
-            static member swService = 2131427351
-            
             // aapt resource value: 0x7f0b0006
             static member terrain = 2131427334
             
-            // aapt resource value: 0x7f0b001f
-            static member text = 2131427359
+            // aapt resource value: 0x7f0b001b
+            static member text = 2131427355
             
-            // aapt resource value: 0x7f0b0019
-            static member textView1 = 2131427353
-            
-            // aapt resource value: 0x7f0b001e
-            static member title = 2131427358
+            // aapt resource value: 0x7f0b001a
+            static member title = 2131427354
             
             // aapt resource value: 0x7f0b000b
             static member top = 2131427339

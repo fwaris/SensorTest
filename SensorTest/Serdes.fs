@@ -14,13 +14,16 @@ let intArrayToBytes (xs:int array) =
    data
 
 let bytesToIntArray (bytes:byte array) =
-    let ms = new MemoryStream(bytes)
-    let strw = new BinaryReader(ms)
-    let c = strw.ReadInt32()
-    let xs = Array.zeroCreate c
-    for i in 0..c-1 do
-        xs.[i] <- strw.ReadInt32()
-    xs
+    if bytes.Length = 0 then
+        [||]
+    else
+        let ms = new MemoryStream(bytes)
+        let strw = new BinaryReader(ms)
+        let c = strw.ReadInt32()
+        let xs = Array.zeroCreate c
+        for i in 0..c-1 do
+            xs.[i] <- strw.ReadInt32()
+        xs
 
  (*
  let d = [|1; 2; 3|] |> intArrayToBytes 

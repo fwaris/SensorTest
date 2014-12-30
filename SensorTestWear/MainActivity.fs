@@ -22,12 +22,15 @@ type MainActivity() =
     let mutable count : int = 1
     let uiCtx = System.Threading.SynchronizationContext.Current
     let mutable subscription = Unchecked.defaultof<_>
-    let defaultSensors = 
-            [|
-                SensorType.Accelerometer; SensorType.Gyroscope; 
-                SensorType.LinearAcceleration
-                SensorType.RotationVector; SensorType.Gravity
-            |]
+
+    let filePrefixes =
+        [|
+            "driving"
+            "twist"
+            "flick_up"
+            "sidewave"
+            "flick_down"
+        |]
 
     let updateService (ctx:Context) (sw:Switch) =
         async {
@@ -38,7 +41,7 @@ type MainActivity() =
                 sw.Click.Add (fun ev -> 
                     if sw.Checked then
                         let i = new Intent(ctx,typeof<WearSensorService>) 
-                        let data = defaultSensors |> Array.map int
+                        let data = ServiceContants.defaultSensors |> Array.map int
                         i.PutExtra(Constants.sensors, Serdes.intArrayToBytes data)
                         |> ctx.StartService |> ignore
                     else
@@ -57,6 +60,18 @@ type MainActivity() =
         let tglService = this.FindViewById<Switch>(Resource_Id.swService)
         let btnFiles   = this.FindViewById<Button>(Resource_Id.btnFiles)
         let btnDelFls  = this.FindViewById<Button>(Resource_Id.btnDelFiles)
+        let spnFiles   = this.FindViewById<Spinner>(Resource_Id.spnFiles)
+ 
+        let adapter = new ArrayAdapter<string>(this,Android.Resource.Layout.SimpleListItem1,filePrefixes)
+        spnFiles.Adapter <- adapter
+        spnFiles.ItemSelected.Add (fun ev ->
+            try
+                let f = filePrefixes.[ev.Position]
+                GlobalState.filenameprefix <- f
+            with ex ->
+               logE ex.Message
+            )
+        spnFiles.SetSelection(0)
 
         updateService this tglService
         subscription <- GlobalState.isRunning.Subscribe(fun running -> 

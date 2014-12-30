@@ -1,6 +1,6 @@
 ﻿module Extensions
 open System
-let tag = "SensorTest"
+let tag = "fw.sensor.host"
 let logI d = Android.Util.Log.Info(tag,d)  |> ignore
 let logE d = Android.Util.Log.Error(tag,d) |> ignore
 

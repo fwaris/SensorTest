@@ -75,5 +75,5 @@ let promptAsync
     }
     |> Async.Start
 
-let toastShort msg =
+let toastShort (msg:string) =
     Toast.MakeText(Android.App.Application.Context,msg, ToastLength.Short).Show() |> ignore

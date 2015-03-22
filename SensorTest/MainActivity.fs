@@ -49,8 +49,11 @@ type MainActivity() =
             )
         //
         btncopy.Click.Add(fun _ ->
-            btncopy.Enabled <- false
-            Storage.copyFile this uiCtx (fun _ _ -> btncopy.Enabled <- true)
+            try
+                btncopy.Enabled <- false
+                Storage.copyFile this uiCtx (fun _ _ -> btncopy.Enabled <- true)
+            with ex ->
+                logE ex.Message
             )
         //
         btnTxFiles.Click.Add(fun _ ->

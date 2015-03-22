@@ -23,10 +23,10 @@ namespace SensorTest
     #nowarn "51" // address-of operator can occur in the code
     #nowarn "1183" // unused 'this' reference
     
-    exception ReturnException1078ad2b84f54becbf7db17a85f48f71 of obj
-    exception ReturnNoneException1078ad2b84f54becbf7db17a85f48f71
+    exception ReturnException7a1ae09c0bf74532a8d49b19239f1509 of obj
+    exception ReturnNoneException7a1ae09c0bf74532a8d49b19239f1509
     [<AutoOpen>]
-    module FuncConvertFinalOverload1078ad2b84f54becbf7db17a85f48f71 =
+    module FuncConvertFinalOverload7a1ae09c0bf74532a8d49b19239f1509 =
       // This extension member adds to the FuncConvert type and is the last resort member in the method overloading rules. 
       type global.Microsoft.FSharp.Core.FuncConvert with
           /// A utility function to convert function values from tupled to curried form

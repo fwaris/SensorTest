@@ -24,7 +24,8 @@ let copyFile ctx uictx f =
             ensureDir extPath
             files
             |> Array.map (fun f ->
-                let toPath = Path.Combine(extPath,Path.GetFileName(f))
+                let fn = Path.GetFileName(f)
+                let toPath = Path.Combine(extPath,fn)
                 try
                     logI (sprintf "copying %s to %s" f toPath)
                     File.Copy(f,toPath)

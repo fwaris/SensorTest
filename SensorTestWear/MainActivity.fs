@@ -27,9 +27,14 @@ type MainActivity() =
         [|
             "driving"
             "twist"
-            "flick_up"
-            "sidewave"
-            "flick_down"
+            "tap"
+            "swipe"
+            "left"
+            "right"
+            "right-tap"
+            "right-swipe"
+            "left-tap"
+            "left-swipe"
         |]
 
     let updateService (ctx:Context) (sw:Switch) =

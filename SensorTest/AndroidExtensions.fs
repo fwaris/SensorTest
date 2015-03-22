@@ -76,4 +76,10 @@ let promptAsync
     |> Async.Start
 
 let toastShort (msg:string) =
-    Toast.MakeText(Android.App.Application.Context,msg, ToastLength.Short).Show() |> ignore
+    if Android.OS.Looper.MyLooper() = null then
+        Android.OS.Looper.Prepare()
+    try
+        Toast.MakeText(Android.App.Application.Context,msg, ToastLength.Short).Show() |> ignore
+    with ex ->
+        let ex2 = ex.InnerException
+        logE ex.Message

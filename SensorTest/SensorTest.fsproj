@@ -17,6 +17,7 @@
     <TargetFrameworkVersion>v4.4.87</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <AndroidLinkMode>None</AndroidLinkMode>
+    <SelectedDevice>LGE LGLS740</SelectedDevice>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -42,7 +43,32 @@
     <PlatformTarget>
     </PlatformTarget>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <JavaMaximumHeapSize>768m</JavaMaximumHeapSize>
   </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.FSharp.targets" />
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Main.axml" />
+    <AndroidResource Include="Resources\values\Strings.xml" />
+    <AndroidResource Include="Resources\drawable\Icon.png" />
+    <AndroidResource Include="Resources\xml\sensortest_wear.xml" />
+    <AndroidResource Include="Resources\raw\wearable_app.apk" />
+    <Compile Include="Resources\Resource.designer.fs" />
+    <None Include="Resources\AboutResources.txt" />
+    <None Include="Properties\AndroidManifest.xml" />
+    <Compile Include="Properties\AssemblyInfo.fs" />
+    <Compile Include="Extensions.fs" />
+    <Compile Include="AndroidExtensions.fs" />
+    <Compile Include="GmsExtensions.fs" />
+    <Compile Include="GlobalState.fs" />
+    <Compile Include="Constants.fs" />
+    <Compile Include="Serdes.fs" />
+    <Compile Include="Storage.fs" />
+    <Compile Include="DataReceiver.fs" />
+    <Compile Include="HostSensorService.fs" />
+    <Compile Include="MainActivity.fs" />
+    <None Include="packages.config" />
+    <AndroidAsset Include="Assets\AboutAssets.txt" />
+  </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
@@ -57,41 +83,7 @@
       <HintPath>..\packages\Xamarin.Android.Support.v7.RecyclerView.21.0.3.0\lib\MonoAndroid403\Xamarin.Android.Support.v7.RecyclerView.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Android.Wearable">
-      <HintPath>..\packages\Xamarin.Android.Wear.1.1.0.1\lib\MonoAndroid44\Xamarin.Android.Wearable.dll</HintPath>
+      <HintPath>..\packages\Xamarin.Android.Wear.1.1.0.2\lib\MonoAndroid44\Xamarin.Android.Wearable.dll</HintPath>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Resources\Resource.designer.fs" />
-    <Compile Include="Properties\AssemblyInfo.fs" />
-    <Compile Include="Extensions.fs" />
-    <Compile Include="AndroidExtensions.fs" />
-    <Compile Include="GmsExtensions.fs" />
-    <Compile Include="GlobalState.fs" />
-    <Compile Include="Constants.fs" />
-    <Compile Include="Serdes.fs" />
-    <Compile Include="Storage.fs" />
-    <Compile Include="DataReceiver.fs" />
-    <Compile Include="HostSensorService.fs" />
-    <Compile Include="MainActivity.fs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\AboutResources.txt" />
-    <None Include="Properties\AndroidManifest.xml" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\Main.axml" />
-    <AndroidResource Include="Resources\values\Strings.xml" />
-    <AndroidResource Include="Resources\drawable\Icon.png" />
-    <AndroidResource Include="Resources\xml\sensortest_wear.xml" />
-    <AndroidResource Include="Resources\raw\wearable_app.apk" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\AboutAssets.txt" />
-  </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.FSharp.targets" />
-  <ItemGroup>
-    <Folder Include="Resources\xml\" />
-    <Folder Include="Resources\raw\" />
   </ItemGroup>
 </Project>
